@@ -2,11 +2,15 @@ INSERT INTO usuarios (nome, email, senha) VALUES
 ('João Silva', 'joao@example.com', '1234'),
 ('Maria Oliveira', 'maria@example.com', '1234');
 
-INSERT INTO disciplinas (nome, descricao, pre_requisito) VALUES
-('Matemática', 'Conteúdo de matemática', NULL),
-('Português', 'Conteúdo de português', 1),
-('Física', 'Conteúdo de física', 1),
-('Química', 'Conteúdo de química', 1);
+INSERT INTO disciplinas (nome, descricao) VALUES
+('Matemática', 'Conteúdo de matemática'),
+('Português', 'Conteúdo de português'),
+('Física', 'Conteúdo de física'),
+('Química', 'Conteúdo de química');
+
+INSERT INTO pre_requisitos (disciplina_id, pre_requisito_id) VALUES
+(3, 1), 
+(4, 1); 
 
 INSERT INTO turmas (disciplina_id, professor_nome, horario_inicio, horario_termino, turma_fechada) VALUES
 (1, 'Prof. Marcos Oliveira', '08:00:00', '10:00:00', 0),

@@ -11,10 +11,17 @@ CREATE TABLE usuarios (
 CREATE TABLE disciplinas (
     disciplina_id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
-    descricao TEXT,
-    pre_requisito INT,
-    FOREIGN KEY (pre_requisito) REFERENCES disciplinas(disciplina_id)
+    descricao TEXT
 );
+
+CREATE TABLE pre_requisitos (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    disciplina_id INT NOT NULL,
+    pre_requisito_id INT NOT NULL,
+    FOREIGN KEY (disciplina_id) REFERENCES disciplinas(disciplina_id),
+    FOREIGN KEY (pre_requisito_id) REFERENCES disciplinas(disciplina_id) 
+);
+
 
 CREATE TABLE turmas (
     turma_id INT PRIMARY KEY AUTO_INCREMENT,
