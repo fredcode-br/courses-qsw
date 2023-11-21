@@ -1,41 +1,41 @@
 <?php
-include('connection.php');
-if (isset($_POST['email']) && isset($_POST['password'])) {
+    include('connection.php');
+    if (isset($_POST['email']) && isset($_POST['password'])) {
 
-    $email = $mysqli->real_escape_string($_POST['email']);
-    $password = $mysqli->real_escape_string($_POST['password']);
+        $email = $mysqli->real_escape_string($_POST['email']);
+        $password = $mysqli->real_escape_string($_POST['password']);
 
-    if (empty($email)) {
-        echo "Insira seu email";
-    } 
-    elseif (empty($password)) {
-        echo "Insira sua senha";
-    } 
-    else {
-        $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$password'";
-        $sql_query = $mysqli->query($sql_code) or die("SQL code execution failed: " . $mysqli->error);
-
-        $quantity = $sql_query->num_rows;
-
-        if ($quantity == 1) {
-            $user = $sql_query->fetch_assoc();
-
-            if (!isset($_SESSION)) {
-                session_start();
-            }
-
-            $_SESSION['id'] = $user['usuario_id'];
-            $_SESSION['name'] = $user['nome'];
-
-            header("Location: index.php");
+        if (empty($email)) {
+            echo "Insira seu email";
+        } 
+        elseif (empty($password)) {
+            echo "Insira sua senha";
         } 
         else {
-            echo '<div class="alert alert-danger" role="alert">
-                    Falha ao fazer login! senha ou email incorretos
-                </div>';
+            $sql_code = "SELECT * FROM usuarios WHERE email = '$email' AND senha = '$password'";
+            $sql_query = $mysqli->query($sql_code) or die("SQL code execution failed: " . $mysqli->error);
+
+            $quantity = $sql_query->num_rows;
+
+            if ($quantity == 1) {
+                $user = $sql_query->fetch_assoc();
+
+                if (!isset($_SESSION)) {
+                    session_start();
+                }
+
+                $_SESSION['id'] = $user['usuario_id'];
+                $_SESSION['name'] = $user['nome'];
+
+                header("Location: index.php");
+            } 
+            else {
+                echo '<div class="alert alert-danger" role="alert">
+                        Falha ao fazer login! senha ou email incorretos
+                    </div>';
+            }
         }
     }
-}
 ?>
 
 <!DOCTYPE html>
@@ -118,7 +118,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
             </div>
         </div>
     </section>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>

@@ -42,7 +42,7 @@
                               </div>';
                     }
                 } else {
-                    header('Location: index.php');
+                    header('Location: subjects.php');
                     exit();
                 }
             ?>
@@ -77,8 +77,6 @@
 
 
 </section>
-
-<script src="./assets/js/main.js"></script>
 
 <?php
     require_once 'footer.php';

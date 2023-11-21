@@ -1,7 +1,33 @@
-/* Imports */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700;900&display=swap');
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
 
+section {
+  flex: 1;
+}
+
+.gradient-custom-2 {
+  background: #fccb90;
+  background: -webkit-linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+  background: linear-gradient(to right, #ee7724, #d8363a, #dd3675, #b44593);
+}
 
 .card.selecionado {
-    border: 2px solid blue; /* ou a cor desejada para indicar a seleção */
+  border: 2px solid blue;
+}
+
+@media (min-width: 768px) {
+  .gradient-form {
+    height: 100vh !important;
   }
+}
+
+@media (min-width: 769px) {
+  .gradient-custom-2 {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+  }
+}
+
