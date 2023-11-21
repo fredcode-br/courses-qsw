@@ -48,6 +48,34 @@
             ?>
         </div>
     </div>
+
+    <div class="modal fade" id="turmaFechadaModal" tabindex="-1" role="dialog" aria-labelledby="turmaFechadaModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="turmaFechadaModalLabel">Turma Fechada</h5>
+                <button type="button" onclick="fecharModalTurmaFechada()" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Esta turma está fechada. Você não pode se inscrever nela.
+                <div id="list-position"  class="d-none flex-column align-items-center mt-5 w-100">
+                    <h4>Posição</h4>
+                    <div>
+                        <p id="position">10</p>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer w-100 flex justify-content-between ">
+                <button type="button" class="btn btn-secondary" onclick="fecharModalTurmaFechada()" data-dismiss="modal">Voltar</button>
+                <button type="button" class="btn btn-primary" id="listaEspera">Entrar na lista de espera</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </section>
 
 <script src="./assets/js/main.js"></script>

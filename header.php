@@ -33,19 +33,7 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Início</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Disciplinas</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Calendário</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contato</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Sobre</a>
+          <a class="nav-link" href="./index.php">Início</a>
         </li>
       </ul>
 
