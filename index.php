@@ -9,7 +9,7 @@
         <div class="text-center">
             <h2 class="mb-4">Selecione uma opção</h2>
             <div class="list-group">
-                <a href="subjects.php" class="list-group-item list-group-item-action">Realizar inscrição</a>
+                <a href="registration.php" class="list-group-item list-group-item-action">Realizar inscrição</a>
                 <a href="registrations.php" class="list-group-item list-group-item-action">Visualizar minhas inscrições</a>
             </div>
         </div>

@@ -8,10 +8,17 @@ CREATE TABLE usuarios (
     senha VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE modulos (
+    modulo_id INT PRIMARY KEY AUTO_INCREMENT,
+    nome VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE disciplinas (
     disciplina_id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(255) NOT NULL,
-    descricao TEXT
+    descricao TEXT,
+    modulo_id INT, 
+    FOREIGN KEY (modulo_id) REFERENCES modulos(modulo_id) 
 );
 
 CREATE TABLE pre_requisitos (
@@ -19,17 +26,17 @@ CREATE TABLE pre_requisitos (
     disciplina_id INT NOT NULL,
     pre_requisito_id INT NOT NULL,
     FOREIGN KEY (disciplina_id) REFERENCES disciplinas(disciplina_id),
-    FOREIGN KEY (pre_requisito_id) REFERENCES disciplinas(disciplina_id) 
+    FOREIGN KEY (pre_requisito_id) REFERENCES disciplinas(disciplina_id)
 );
-
 
 CREATE TABLE turmas (
     turma_id INT PRIMARY KEY AUTO_INCREMENT,
+	nome VARCHAR(9) NOT NULL,
     disciplina_id INT NOT NULL,
     professor_nome VARCHAR(255) NOT NULL,
     horario_inicio TIME NOT NULL,
     horario_termino TIME NOT NULL,
-    turma_fechada BOOLEAN NOT NULL DEFAULT 0, 
+    turma_fechada BOOLEAN NOT NULL DEFAULT 0,
     FOREIGN KEY (disciplina_id) REFERENCES disciplinas(disciplina_id)
 );
 

@@ -1,40 +1,44 @@
+var turmaSelecionadaPorDisciplina = {};
 
-var turmaSelecionada = 0;
+function selecionarTurma(numeroTurma, elemento, disciplinaId) {
+  if (!turmaSelecionadaPorDisciplina.hasOwnProperty(disciplinaId)) {
+      turmaSelecionadaPorDisciplina[disciplinaId] = 0;
+  }
 
-function selecionarTurma(numeroTurma, elemento) {
-    if (turmaSelecionada > 0) {
-        var turmaAnterior = document.querySelector('.turma-card.selecionado');
-        if (turmaAnterior) {
-            turmaAnterior.classList.remove('selecionado');
-        }
-    }
-    elemento.classList.add('selecionado');
-    turmaSelecionada = numeroTurma;
+  var turmaAnterior = document.querySelector('.disciplina-' + disciplinaId + ' .turma-card.selecionado');
+  if (turmaAnterior && turmaAnterior !== elemento) {
+      turmaAnterior.classList.remove('selecionado');
+  }
 
-    var inscreverBtn = document.getElementById('inscreverBtn');
-    inscreverBtn.disabled = (turmaSelecionada === 0);
+  elemento.classList.add('selecionado');
+  turmaSelecionadaPorDisciplina[disciplinaId] = numeroTurma;
+
+  var inscreverBtn = document.getElementById('inscreverBtn');
+  inscreverBtn.removeAttribute("disabled");
 }
 
 function inscrever(disciplinaId) {
-  if (turmaSelecionada > 0) {
-      var xhr = new XMLHttpRequest();
-      xhr.open('POST', './functions/register.php', true);
-      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-      xhr.onreadystatechange = function () {
-          if (xhr.readyState == 4 && xhr.status == 200) {
-            var resp = xhr.responseText;
-            if(resp == "A turma está fechada."){
-              abrirModalTurmaFechada()
-            } else if (resp == "Inscrição realizada com sucesso!") {
-              alert(resp)
-            } else {
-              alert(resp)
+    var turmaSelecionada = turmaSelecionadaPorDisciplina[disciplinaId];
+
+    if (turmaSelecionada > 0) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', './functions/register.php', true);
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                var resp = xhr.responseText;
+                if (resp == "A turma está fechada.") {
+                    abrirModalTurmaFechada();
+                } else if (resp == "Inscrição realizada com sucesso!") {
+                    alert(resp);
+                } else {
+                    alert(resp);
+                }
             }
-          }
-      };
-      xhr.send('disciplina_id=' + encodeURIComponent(disciplinaId) +
-          '&turma_id=' + encodeURIComponent(turmaSelecionada));
-  }
+        };
+        xhr.send('disciplina_id=' + encodeURIComponent(disciplinaId) +
+            '&turma_id=' + encodeURIComponent(turmaSelecionada));
+    }
 }
 
 function abrirModalTurmaFechada() {
